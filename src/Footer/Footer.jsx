@@ -1,5 +1,4 @@
-// components/Footer.jsx
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Facebook,
@@ -11,6 +10,16 @@ import {
 } from "lucide-react";
 
 const Footer = () => {
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    setSubscribed(true);
+
+    // Auto-hide message after 4 seconds
+    setTimeout(() => setSubscribed(false), 4000);
+  };
+
   return (
     <footer className="bg-[#0a0a0a] text-white pt-16 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 pb-16 border-b border-white/10">
@@ -57,7 +66,7 @@ const Footer = () => {
           <h3 className="text-white font-semibold mb-4">Contact</h3>
           <ul className="space-y-3 text-gray-400 text-sm">
             <li className="flex items-start gap-2">
-              <Mail size={16} /> info@codocu.com
+              <Mail size={16} /> codocuofficial@gmail.com
             </li>
             <li className="flex items-start gap-2">
               <MapPin size={16} /> Kathmandu, Nepal
@@ -72,11 +81,13 @@ const Footer = () => {
           <p className="text-sm text-gray-400 mb-3">
             Stay updated with Codocu insights, launches & more.
           </p>
-          <form className="flex items-center">
+
+          <form className="flex items-center" onSubmit={handleSubscribe}>
             <input
               type="email"
               placeholder="Your email"
               className="bg-white text-black px-4 py-2 rounded-l-md text-sm outline-none w-full"
+              required
             />
             <button
               type="submit"
@@ -85,6 +96,13 @@ const Footer = () => {
               Subscribe
             </button>
           </form>
+
+          {/* Success message */}
+          {subscribed && (
+            <p className="text-green-400 text-sm mt-2">
+              ✅ Successfully subscribed!
+            </p>
+          )}
         </div>
       </div>
 
@@ -92,13 +110,22 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
         <p>© {new Date().getFullYear()} Codocu. All rights reserved.</p>
         <div className="flex gap-4">
-          <a href="#" className="hover:text-red-500 transition">
+          <a
+            href="https://www.facebook.com/profile.php?id=61577022802153"
+            className="hover:text-red-500 transition"
+          >
             <Facebook size={18} />
           </a>
-          <a href="#" className="hover:text-red-500 transition">
+          <a
+            href="https://www.instagram.com/codocuofficial/"
+            className="hover:text-red-500 transition"
+          >
             <Instagram size={18} />
           </a>
-          <a href="#" className="hover:text-red-500 transition">
+          <a
+            href="https://x.com/codocu176025?t=LLldwY31GJV115AsQU3NTA&s=09"
+            className="hover:text-red-500 transition"
+          >
             <Twitter size={18} />
           </a>
           <a href="#" className="hover:text-red-500 transition">
