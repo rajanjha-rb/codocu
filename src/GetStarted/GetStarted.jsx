@@ -29,12 +29,12 @@ const itemVariants = {
 const socialMedia = [
   {
     name: "Messenger",
-    href: "https://m.me/yourprofile",
+    href: "https://www.facebook.com/profile.php?id=61577022802153",
     icon: <FaFacebookMessenger />,
   },
   {
     name: "Instagram",
-    href: "https://instagram.com/yourprofile",
+    href: "https://www.instagram.com/codocuofficial",
     icon: <FaInstagram />,
   },
   {
