@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const servicesData = [
   {
@@ -7,6 +7,8 @@ const servicesData = [
     title: "Custom Web Development",
     description:
       "Tailored websites built with modern technologies that scale with your business.",
+    moreInfo:
+      "We build scalable, SEO-optimized, and responsive websites using the latest tools like React, Tailwind, and Appwrite.",
     icon: (
       <svg
         className="w-14 h-14 text-red-500"
@@ -27,6 +29,8 @@ const servicesData = [
     title: "UI/UX Design",
     description:
       "Intuitive and beautiful user interfaces to enhance user engagement and satisfaction.",
+    moreInfo:
+      "We craft smooth user journeys, wireframes, and visually pleasing UI based on UX research and real user feedback.",
     icon: (
       <svg
         className="w-14 h-14 text-red-500"
@@ -46,6 +50,8 @@ const servicesData = [
     title: "API Integration",
     description:
       "Seamlessly connect third-party APIs to your app for enhanced functionality.",
+    moreInfo:
+      "We integrate payment gateways, social logins, analytics, and external services with strong error handling.",
     icon: (
       <svg
         className="w-14 h-14 text-red-500"
@@ -94,7 +100,6 @@ const iconHoverVariants = {
 };
 
 const Services = () => {
-  // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -135,18 +140,16 @@ const Services = () => {
           animate="show"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
         >
-          {servicesData.map(({ id, title, description, icon }) => {
-            const ref = useRef(null);
-            // Notice: once: false here so animation triggers each time in view
-            const isInView = useInView(ref, { once: false, margin: "-100px" });
+          {servicesData.map(({ id, title, description, moreInfo, icon }) => {
+            const [showMore, setShowMore] = useState(false);
 
             return (
               <motion.article
                 key={id}
-                ref={ref}
                 variants={cardVariants}
                 initial="hidden"
-                animate={isInView ? "show" : "hidden"}
+                whileInView="show"
+                viewport={{ once: false, margin: "-100px" }}
                 className="bg-gradient-to-tr from-gray-800/70 to-black/70 backdrop-blur-md border border-gray-700 rounded-3xl p-8 shadow-lg flex flex-col"
                 role="region"
                 aria-labelledby={`service-title-${id}`}
@@ -156,27 +159,40 @@ const Services = () => {
                   variants={iconHoverVariants}
                   initial="rest"
                   whileHover="hover"
-                  animate="rest"
                   className="mb-6"
                 >
                   {icon}
                 </motion.div>
+
                 <h3
                   id={`service-title-${id}`}
                   className="text-2xl font-semibold mb-3 text-red-500 tracking-wide"
                 >
                   {title}
                 </h3>
-                <p className="text-gray-300 flex-grow leading-relaxed mb-6">
+
+                <p className="text-gray-300 flex-grow leading-relaxed mb-4">
                   {description}
                 </p>
+
+                {showMore && (
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-sm text-gray-400 mb-6"
+                  >
+                    {moreInfo}
+                  </motion.p>
+                )}
+
                 <motion.button
                   whileHover={{ scale: 1.05, backgroundColor: "#EF4444" }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowMore(!showMore)}
                   className="mt-auto self-start bg-red-600 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
                   aria-label={`Learn more about ${title}`}
                 >
-                  Learn More
+                  {showMore ? "Show Less" : "Learn More"}
                 </motion.button>
               </motion.article>
             );
