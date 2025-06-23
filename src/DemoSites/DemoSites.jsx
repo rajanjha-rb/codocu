@@ -8,7 +8,7 @@ const demoSitesData = [
     description:
       "Elegant and luxurious e-commerce template for premium watches.",
     src: "/watch.png",
-    demoLink: "https://watch-store-demo.com",
+    demoLink: "https://watch-rho-lime.vercel.app/",
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const demoSitesData = [
     description:
       "Trendy clothing store template for fashion brands and boutiques.",
     src: "/clothing.png",
-    demoLink: "https://clothing-hub-demo.com",
+    demoLink: "https://clothes-pi.vercel.app/",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const demoSitesData = [
     description:
       "Modern e-commerce design tailored for sports and casual footwear.",
     src: "/shoes.png",
-    demoLink: "https://shoe-spot-demo.com",
+    demoLink: "https://shoesdemo.vercel.app/",
   },
   {
     id: 4,
@@ -32,7 +32,7 @@ const demoSitesData = [
     description:
       "Stylish template focused on accessories like bags, hats, and jewelry.",
     src: "/accessories.png",
-    demoLink: "https://accessories-mart-demo.com",
+    demoLink: "https://acc-liard.vercel.app/",
   },
 ];
 
