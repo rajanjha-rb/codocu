@@ -1,12 +1,7 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
-import {
-  FaFacebookMessenger,
-  FaInstagram,
-  FaWhatsapp,
-  FaViber,
-} from "react-icons/fa";
+import { FaFacebookMessenger, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const containerVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -34,18 +29,13 @@ const socialMedia = [
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/codocuofficial",
+    href: "https://www.instagram.com/codocu_official/",
     icon: <FaInstagram />,
   },
   {
     name: "WhatsApp",
-    href: "https://wa.me/yourwhatsappnumber",
+    href: "https://wa.me/9779762717552",
     icon: <FaWhatsapp />,
-  },
-  {
-    name: "Viber",
-    href: "viber://chat?number=+yourvibernumber",
-    icon: <FaViber />,
   },
 ];
 
