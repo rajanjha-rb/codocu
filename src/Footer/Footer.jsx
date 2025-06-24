@@ -117,7 +117,7 @@ const Footer = () => {
             <Facebook size={18} />
           </a>
           <a
-            href="https://www.instagram.com/codocuofficial/"
+            href="https://www.instagram.com/codocu_official/"
             className="hover:text-red-500 transition"
           >
             <Instagram size={18} />
